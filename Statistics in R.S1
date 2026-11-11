@@ -1,0 +1,177 @@
+
+# ============================================================
+# Task 01 - Descriptive Statistics
+# Subject: Statistics with R Programming
+# Department: Neuroscience Research
+# Dataset: fMRI Visualization Dataset
+# Selected Variable: Age
+# ============================================================
+
+
+# ------------------------------------------------------------
+# 1. TASK DESCRIPTION
+# ------------------------------------------------------------
+
+# Objective:
+# Calculate and interpret descriptive statistics
+# for one quantitative variable from data_clean.
+
+# Instructions:
+# 1. Select one quantitative variable.
+# 2. Calculate Mean and Median.
+# 3. Calculate Standard Deviation and IQR.
+# 4. Create a Histogram.
+# 5. Interpret the statistical results and distribution.
+
+# Expected Output:
+# - Descriptive statistics table
+# - Histogram
+# - Brief statistical and scientific interpretation
+
+
+# ------------------------------------------------------------
+# 2. DATA IMPORT
+# ------------------------------------------------------------
+
+library(readxl)
+
+file_path <- file.choose()
+
+homework_fmri_visualization_dataset <- read_excel(file_path)
+
+data_clean <- homework_fmri_visualization_dataset
+
+# Check dataset dimensions and column names
+
+dim(data_clean)
+
+names(data_clean)
+
+
+# ------------------------------------------------------------
+# 3. VARIABLE SELECTION
+# ------------------------------------------------------------
+
+# Selected quantitative variable: Age
+
+variable_name <- "Age"
+
+# Extract variable
+
+x_raw <- data_clean[[variable_name]]
+
+# Remove missing values
+
+x <- x_raw[!is.na(x_raw)]
+
+
+# ------------------------------------------------------------
+# 4. DESCRIPTIVE STATISTICS
+# ------------------------------------------------------------
+
+# Mean
+
+mean(x)
+
+# Median
+
+median(x)
+
+# Standard Deviation
+
+sd(x)
+
+# Interquartile Range
+
+IQR(x)
+
+
+# ------------------------------------------------------------
+# 5. DESCRIPTIVE STATISTICS TABLE
+# ------------------------------------------------------------
+
+descriptive_stats <- data.frame(
+  Variable = variable_name,
+  N = length(x),
+  Missing = sum(is.na(x_raw)),
+  Mean = mean(x),
+  Median = median(x),
+  Standard_Deviation = sd(x),
+  IQR = IQR(x),
+  Minimum = min(x),
+  Maximum = max(x)
+)
+
+print(descriptive_stats)
+
+
+# ------------------------------------------------------------
+# 6. HISTOGRAM
+# ------------------------------------------------------------
+
+hist(
+  x,
+  main = "Age Distribution",
+  xlab = "Age (Years)",
+  ylab = "Frequency",
+  col = "lightblue",
+  border = "white"
+)
+
+
+# ------------------------------------------------------------
+# 7. DISTRIBUTION SKEWNESS
+# ------------------------------------------------------------
+
+install.packages("moments")
+library(moments)
+
+skewness(x)
+
+# Calculate quartiles
+
+quantile(x)
+
+
+# ------------------------------------------------------------
+# 8. RESULTS
+# ------------------------------------------------------------
+
+# Variable: Age
+# Mean: 24.52222
+# Median: 24
+# Standard Deviation: 4.58374
+# IQR: 7
+
+
+# ------------------------------------------------------------
+# 9. STATISTICAL INTERPRETATION
+# ------------------------------------------------------------
+
+# Mean and Median:
+# The mean age was 24.52 years, while the median was 24 years.
+# The mean was slightly higher than the median.
+
+# Standard Deviation:
+# The standard deviation was 4.58 years,
+# indicating the variability of participants' ages.
+
+# Interquartile Range:
+# The IQR was 7 years, representing the spread
+# of the middle 50% of observations.
+
+# Histogram:
+# The highest frequency of participants was around 20 years.
+# The frequency decreased as age increased toward 35 years.
+# The distribution appeared to show a possible right-skewed pattern.
+
+# Scientific Interpretation:
+# The sample consisted mainly of young adults,
+# with an average age of approximately 24.5 years.
+# Age composition should be considered when interpreting
+# neuroscience research findings and their generalizability.
+
+
+# ============================================================
+# END OF TASK 01
+# ============================================================
