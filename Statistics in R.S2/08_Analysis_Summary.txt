@@ -1,0 +1,29 @@
+PRACTICAL TASK: fMRI STROOP OUTLIER ANALYSIS
+============================================
+
+Original sample size: 240
+Valid observations: 120
+Missing RT values: 120
+Non-finite RT values: 0
+
+IQR METHOD
+Q1: 642.714680504624
+Q3: 748.415934908196
+IQR: 105.701254403573
+Lower fence: 484.162798899265
+Upper fence: 906.967816513555
+Number of IQR outliers: 0
+
+Z-SCORE METHOD
+Number of Z-score outliers: 0
+
+METHOD COMPARISON
+Detected by both: 0
+IQR only: 0
+Z-score only: 0
+
+DESCRIPTIVE STATISTICS
+           Dataset   N     Mean       SD   Median
+1         Original 120 694.6159 71.40851 690.3179
+2     IQR Filtered 120 694.6159 71.40851 690.3179
+3 Z-score Filtered 120 694.6159 71.40851 690.3179
